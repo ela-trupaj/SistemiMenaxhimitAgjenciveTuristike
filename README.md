@@ -77,9 +77,9 @@ Database (MySQL)
 
 3. Destinacionet
 - destinacioni_id (PK)
-- emri
+- d_emri
 - pershkrimi
-- locacion
+- lokacioni
 
 4. Ofertat
 - oferta_id (PK)
