@@ -38,7 +38,7 @@ Sistemi duhet t'u mundësojë përdoruesve këto funksionalitete:
 
 ### Dizajni teknik
 
-Sistemi për Menaxhimin e Agjencive Turistike do të zhvillohet si aplikacion web duke përdorur HTML, CSS dhe JavaScript për pjesën e frontend-it, PHP për backend-in dhe MySQL për ruajtjen e të dhënave. Kjo ndarje mundëson organizimin e sistemit në pjesë të veçanta, ku secila ka përgjegjësi të caktuar.
+Për zhvillimin e sistemit do të përdoret një arkitekturë që ndan ndërfaqen e përdoruesit, logjikën e aplikacionit dhe ruajtjen e të dhënave. Kjo strukturë do të mundësojë organizimin më të mirë të funksionaliteteve dhe komunikimin ndërmjet pjesëve të sistemit.
 
 - **Frontend: HTML, CSS dhe JavaScript** – do të përdoren për krijimin e ndërfaqes së përdoruesit, dizajnin, navigimin dhe funksionalitetet interaktive të platformës. HTML do të përdoret për strukturën e faqeve, CSS për dizajnin dhe përshtatjen e tyre në pajisje të ndryshme, ndërsa JavaScript për ndërveprimet me përdoruesit.
 
@@ -109,13 +109,13 @@ Database (MySQL)
 - data_pageses
 - statusi
 
-Relacionet kryesore
+### Relacionet kryesore
 
-Një Rol mund të ketë shumë përdorues  → 1:N
-Një Destinacion mund të ketë shumë oferta  → 1:N
-Një Përdorues (klient) mund të bëjë shumë rezervime → 1:N
-Një Ofertë mund të ketë shumë rezervime → 1:N
-Një Rezervim mund të ketë një ose më shumë pagesa → 1:N
+- Një Rol mund të ketë shumë përdorues  → 1:N
+- Një Destinacion mund të ketë shumë oferta  → 1:N
+- Një Përdorues (klient) mund të bëjë shumë rezervime → 1:N
+- Një Ofertë mund të ketë shumë rezervime → 1:N
+- Një Rezervim mund të ketë një ose më shumë pagesa → 1:N
 
 ### Plani për Raportin 2
 
