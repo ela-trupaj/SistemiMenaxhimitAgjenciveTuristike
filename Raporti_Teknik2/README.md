@@ -1,5 +1,3 @@
-
-
 #-------------
 Admin Login
 #-------------
@@ -9,9 +7,19 @@ Email:
 Fjalëkalimi:
     FjalekalimiYtUnik
 
+#-------------
+Client Login
+#-------------
+Email:
+    ela@test.com
+Fjalëkalimi:
+    ElaTrupaj
 
-ela@test.com
-ElaTrupaj
+#-------------
+Staff Login
+#-------------
+Email:
+    staf@nexora.local
 
-staf@nexora.local
-NexoraStaff
+Fjalëkalimi:
+    NexoraStaff
