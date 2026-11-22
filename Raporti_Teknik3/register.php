@@ -174,7 +174,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
     </div>
 </main>
-
+<footer>
+    <div class="footer-bottom">
+        <p>
+            © <span id="year"></span> LUNÉA Voyages.
+            Të gjitha të drejtat e rezervuara.
+        </p>
+    </div>
+</footer>
 <script src="assets/auth.js"></script>
 </body>
 </html>
