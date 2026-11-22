@@ -21,10 +21,7 @@ function response(int $status, array $data): never
     exit;
 }
 
-// ==========================================
 // AUTENTIKIMI DHE AUTORIZIMI
-// ==========================================
-
 $user = current_user();
 
 if (!$user) {
@@ -42,10 +39,7 @@ if ((int) $user['roli_id'] !== 1) {
     ]);
 }
 
-// ==========================================
 // IDENTIFIKIMI I MODULIT
-// ==========================================
-
 $entity = (string) ($_GET['entity'] ?? '');
 
 if (!isset($entities[$entity])) {
@@ -62,10 +56,6 @@ $id = filter_var(
     FILTER_VALIDATE_INT,
     ['options' => ['min_range' => 1]]
 ) ?: null;
-
-// ==========================================
-// GET - LEXIMI I TE DHENAVE
-// ==========================================
 
 if ($method === 'GET') {
 
@@ -93,7 +83,6 @@ if ($method === 'GET') {
         ]);
     }
 
-    // Leximi i te gjithe regjistrave.
     $stmt = $db->query($entities[$entity]['list']);
 
     $records = $stmt->fetchAll();
@@ -104,13 +93,7 @@ if ($method === 'GET') {
     ]);
 }
 
-// ==========================================
 // MBROJTJA CSRF
-// ==========================================
-
-// Operacionet qe ndryshojne te dhenat
-// kerkojne token CSRF nga sesioni aktiv.
-
 $token = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
 
 if (!hash_equals(csrf(), (string) $token)) {
@@ -120,14 +103,10 @@ if (!hash_equals(csrf(), (string) $token)) {
     ]);
 }
 
-// ==========================================
 // POST - SHTIMI I REGJISTRAVE
 // PATCH - PERDITESIMI I REGJISTRAVE
-// ==========================================
-
 if ($method === 'POST' || $method === 'PATCH') {
 
-    // Leximi i trupit JSON te kerkeses.
     $input = json_decode(
         file_get_contents('php://input'),
         true
@@ -195,10 +174,7 @@ if ($method === 'POST' || $method === 'PATCH') {
     );
 }
 
-// ==========================================
-// DELETE - FSHIRJA E REGJISTRAVE
-// ==========================================
-
+// FSHIRJA E REGJISTRAVE
 if ($method === 'DELETE') {
 
     if ($id === null) {
@@ -237,10 +213,7 @@ if ($method === 'DELETE') {
     }
 }
 
-// ==========================================
 // METODAT E PALEJUARA
-// ==========================================
-
 header('Allow: GET, POST, PATCH, DELETE');
 
 response(405, [

@@ -40,7 +40,6 @@
             </button>
 
             <div class="nav-links" id="nav-links">
-
                 <a class="active" href="#">Ballina</a>
                 <a href="#">Destinacionet</a>
                 <a href="#">Ofertat</a>
@@ -51,7 +50,6 @@
                     <a href="login.php">Kyçu</a>
                     <a href="register.php">Regjistrohu</a>
                 </div>
-
             </div>
 
             <div class="auth-links">
@@ -78,7 +76,6 @@
                 </span>
 
                 <h1>Zbulo botën me <br> LUNÉA Voyages</h1>
-
                 <p> Destinacione të veçanta, oferta të shkëlqyera dhe përvoja të paharrueshme udhëtimi. </p>
 
                 <div class="hero-actions">
@@ -93,7 +90,6 @@
 
         <!-- SEARCH SECTION -->
         <section class="search-area container" aria-label="Kërko oferta turistike">
-
             <form class="search-panel" id="search-form">
 
                 <!-- DESTINACIONI -->
@@ -174,12 +170,12 @@
                         <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                     </a>
 
-                    <span class="travel-story-signature">Discover the extraordinary.</span>
+                    <span class="travel-story-signature">Zbuloni botën përtej së zakonshmes.</span>
                 </div>
 
                 <div class="travel-story-visual">
                     <img src="assets/images/Home.png" alt="Pamje e një destinacioni bregdetar" loading="lazy">
-                    <span class="travel-story-caption">THE ART OF TRAVEL · LUNÉA</span>
+                    <span class="travel-story-caption">ARTI I UDHËTIMIT · LUNÉA</span>
                 </div>
             </div>
         </section>
@@ -246,9 +242,7 @@
                         <i class="bx bx-right-arrow-alt"></i>
                     </button>
                 </div>
-
             </div>
-
         </section>
 
         <!-- OFFERS SECTION -->
@@ -483,7 +477,8 @@
     <!-- OFFER DIALOG -->
     <dialog id="offer-dialog">
 
-        <button class="dialog-close" id="dialog-close" type="button" aria-label="Mbyll" > ×
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="Mbyll" > 
+            <i class="bx bx-x" aria-hidden="true"></i>
         </button>
 
         <h2>Detajet e ofertës</h2>
