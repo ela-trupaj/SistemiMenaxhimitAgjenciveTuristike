@@ -4,7 +4,10 @@ declare(strict_types=1);
 function page_top(string $title): void
 {
     $user = current_user();
-    $roleId = (int) ($user['roli_id'] ?? 0);
+    $roleId = (int)($user['roli_id'] ?? 0);
+
+    // Rruga kryesore e projektit
+    $baseUrl = BASE_URL;
 
     $roleName = match ($roleId) {
         ROLE_ADMIN => 'Administrator',
@@ -15,6 +18,7 @@ function page_top(string $title): void
 
     $isAdmin = $roleId === ROLE_ADMIN;
     $isStaff = $roleId === ROLE_STAFF;
+    $isClient = $roleId === ROLE_CLIENT;
 
     $panelTitle = match ($roleId) {
         ROLE_ADMIN => 'Paneli i administrimit',
@@ -24,10 +28,10 @@ function page_top(string $title): void
     };
 
     $homeLink = match ($roleId) {
-        ROLE_ADMIN => 'dashboard.php',
-        ROLE_STAFF => 'staff.php',
-        ROLE_CLIENT => 'client.php',
-        default => 'index.php'
+        ROLE_ADMIN => $baseUrl . 'dashboard.php',
+        ROLE_STAFF => $baseUrl . 'staff.php',
+        ROLE_CLIENT => $baseUrl . 'client/client.php',
+        default => $baseUrl . 'index.php'
     };
 
     $homeLabel = match ($roleId) {
@@ -36,7 +40,7 @@ function page_top(string $title): void
         ROLE_CLIENT => 'Ballina',
         default => 'Paneli'
     };
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="sq">
@@ -44,55 +48,62 @@ function page_top(string $title): void
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= e($title) ?> · NEXORA</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title><?= e($title) ?> · LUNÉA Voyages</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="<?= e($baseUrl) ?>dashboard.css">
+
+    <!-- BOXICONS Link -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="app">
 
-    <aside class="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="dashboard-sidebar">
 
         <div class="brand">
-
-            <div class="brand-mark">N</div>
-
             <div>
-                <b>NEXORA<span class="accent">.</span></b>
+                <b>LUNÉA Voyages<span class="accent">.</span></b>
                 <small>TRAVEL MANAGEMENT</small>
             </div>
-
         </div>
 
         <div class="nav-label">
-            <?= $roleId === ROLE_CLIENT ? 'LLOGARIA IME' : 'MENAXHIMI' ?>
+            <?= $isClient ? 'LLOGARIA IME' : 'MENAXHIMI' ?>
         </div>
 
         <nav>
 
             <!-- Faqja kryesore sipas rolit -->
             <a href="<?= e($homeLink) ?>">
-                ◫ &nbsp; <?= e($homeLabel) ?>
+                <i class="bx bx-grid-alt"></i>
+                <span><?= e($homeLabel) ?></span>
             </a>
 
             <!-- Modulet e Administratorit dhe Stafit -->
             <?php if ($isAdmin || $isStaff): ?>
 
-                <a href="manage.php?entity=destinacionet">
-                    ⌖ &nbsp; Destinacionet
+                <a href="<?= e($baseUrl) ?>manage.php?entity=destinacionet">
+                    <i class="bx bx-map-pin"></i>
+                    <span>Destinacionet</span>
                 </a>
 
-                <a href="manage.php?entity=ofertat">
-                    ▧ &nbsp; Ofertat turistike
+                <a href="<?= e($baseUrl) ?>manage.php?entity=ofertat">
+                    <i class="bx bx-purchase-tag-alt"></i>
+                    <span>Ofertat turistike</span>
                 </a>
 
-                <a href="manage.php?entity=rezervimet">
-                    ▤ &nbsp; Rezervimet
+                <a href="<?= e($baseUrl) ?>manage.php?entity=rezervimet">
+                    <i class="bx bx-calendar-check"></i>
+                    <span>Rezervimet</span>
                 </a>
 
-                <a href="manage.php?entity=pagesat">
-                    ◈ &nbsp; Pagesat
+                <a href="<?= e($baseUrl) ?>manage.php?entity=pagesat">
+                    <i class="bx bx-credit-card"></i>
+                    <span>Pagesat</span>
                 </a>
 
             <?php endif; ?>
@@ -100,14 +111,41 @@ function page_top(string $title): void
             <!-- Vetem Administratori -->
             <?php if ($isAdmin): ?>
 
-                <a href="create_staff.php">
-                    + &nbsp; Shto Staf
+                <a href="<?= e($baseUrl) ?>create_staff.php">
+                    <i class="bx bx-user-plus"></i>
+                    <span>Shto Staf</span>
+                </a>
+
+            <?php endif; ?>
+
+            <!-- Modulet e Klientit -->
+            <?php if ($isClient): ?>
+
+                <a href="<?= e($baseUrl) ?>client/client_offers.php">
+                    <i class="bx bx-purchase-tag-alt"></i>
+                    <span>Ofertat turistike</span>
+                </a>
+
+                <a href="<?= e($baseUrl) ?>client/client_bookings.php">
+                    <i class="bx bx-calendar-check"></i>
+                    <span>Rezervimet e mia</span>
+                </a>
+
+                <a href="<?= e($baseUrl) ?>client/client_payments.php">
+                    <i class="bx bx-credit-card"></i>
+                    <span>Pagesat e mia</span>
+                </a>
+
+                <a href="<?= e($baseUrl) ?>client/client_profile.php">
+                    <i class="bx bx-user-circle"></i>
+                    <span>Profili im</span>
                 </a>
 
             <?php endif; ?>
 
         </nav>
 
+        <!-- Te dhenat e perdoruesit -->
         <div class="side-bottom">
 
             <div class="avatar">
@@ -115,39 +153,37 @@ function page_top(string $title): void
             </div>
 
             <div>
-
-                <b>
-                    <?= e($user['emri'] ?? 'Përdorues') ?>
-                </b>
-
-                <small>
-                    <?= e($roleName) ?>
-                </small>
-
+                <b><?= e($user['emri'] ?? 'Përdorues') ?></b>
+                <small><?= e($roleName) ?></small>
             </div>
 
         </div>
 
         <!-- Logout per te gjitha rolet -->
-        <form method="POST" action="logout.php">
+        <form method="POST" action="<?= e($baseUrl) ?>logout.php">
 
-            <input
-                type="hidden"
-                name="csrf"
-                value="<?= e(csrf()) ?>"
-            >
+            <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
 
             <button type="submit" class="logout">
-                Dil nga sistemi ↗
+                Dil nga sistemi
+                <i class="bx bx-log-out"></i>
             </button>
 
         </form>
 
     </aside>
 
+    <!-- Permbajtja kryesore -->
     <main class="main">
 
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <!-- Topbar -->
         <header class="topbar">
+
+            <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Hap menynë" aria-controls="dashboard-sidebar" aria-expanded="false">
+                <i class="bx bx-menu"></i>
+            </button>
 
             <span>
                 <?= e($panelTitle) ?>
@@ -162,8 +198,10 @@ function page_top(string $title): void
 
         </header>
 
+        <!-- Permbajtja e faqes -->
         <div class="content">
 
+            <!-- Mesazhet e sistemit -->
             <?php if (isset($_SESSION['flash'])): ?>
 
                 <?php
@@ -177,15 +215,18 @@ function page_top(string $title): void
 
             <?php endif; ?>
 
-    <?php
+<?php
 }
 
 function page_bottom(): void
 {
-    ?>
+    // Rruga kryesore e projektit
+    $baseUrl = BASE_URL;
+?>
 
+            <!-- Footer -->
             <footer class="footer">
-                © 2026 NEXORA · Travel Management System
+                © <?= date('Y') ?> LUNÉA Voyages. Të gjitha të drejtat e rezervuara.
             </footer>
 
         </div>
@@ -194,7 +235,8 @@ function page_bottom(): void
 
 </div>
 
-<script src="assets/app.js"></script>
+<!-- JavaScript -->
+<script src="<?= e($baseUrl) ?>assets/auth.js"></script>
 
 </body>
 </html>

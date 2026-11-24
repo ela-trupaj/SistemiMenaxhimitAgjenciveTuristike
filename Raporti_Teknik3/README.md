@@ -5,7 +5,7 @@ Email:
     admin@nexora.local
 
 Fjalëkalimi:
-    FjalekalimiYtUnik
+    Admin2026!
 
 #-------------
 Client Login
@@ -13,7 +13,7 @@ Client Login
 Email:
     ela@test.com
 Fjalëkalimi:
-    ElaTrupaj
+    Klient2026!
 
 #-------------
 Staff Login
@@ -22,4 +22,6 @@ Email:
     staf@nexora.local
 
 Fjalëkalimi:
-    NexoraStaff
+    Staf2026!
+
+Te admini te ofertat turistike me bo qe me i gjeneru te dhenat si pdf e mi dergu ne email
