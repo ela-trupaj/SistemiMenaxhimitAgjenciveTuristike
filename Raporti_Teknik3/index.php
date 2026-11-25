@@ -20,9 +20,146 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <style>
+    #page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #422D34;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        transition: opacity 0.4s ease,
+                    visibility 0.4s ease;
+    }
+
+    .loader-brand {
+        text-align: center;
+        color: #F8F5F0;
+    }
+
+    .loader-brand h2 {
+        font-family: Georgia, serif;
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: 7px;
+        margin: 0 0 8px;
+    }
+
+    .loader-brand span {
+        font-size: 11px;
+        letter-spacing: 7px;
+        color: #E8D9DF;
+    }
+
+    .loader-spinner {
+        width: 38px;
+        height: 38px;
+        margin-top: 12px;
+        border: 2px solid #A98691;
+        border-top-color: #F8F5F0;
+        border-radius: 50%;
+        animation: loader-spin 1s linear infinite;
+    }
+
+    #loader-message {
+        font-size: 12px;
+        color: #E8D9DF;
+        letter-spacing: 1.5px;
+        margin: 0;
+    }
+
+    #page-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    #offline-icon {
+        font-size: 42px;
+        color: #E8D9DF;
+    }
+
+    #offline-icon[hidden] {
+        display: none;
+    }
+
+    @keyframes loader-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* RESPONSIVE - TABLET */
+@media (max-width: 768px) {
+    .loader-brand h2 {
+        font-size: 38px;
+        letter-spacing: 6px;
+    }
+
+    .loader-spinner {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* RESPONSIVE - MOBILE */
+@media (max-width: 480px) {
+    #page-loader {
+        gap: 16px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .loader-brand h2 {
+        font-size: 32px;
+        letter-spacing: 5px;
+    }
+
+    .loader-brand span {
+        font-size: 10px;
+        letter-spacing: 5px;
+    }
+
+    .loader-spinner {
+        width: 30px;
+        height: 30px;
+    }
+
+    #loader-message {
+        font-size: 11px;
+    }
+
+    #offline-icon {
+        font-size: 32px;
+    }
+}
+</style>
+
+<noscript>
+    <style>
+        #page-loader {
+            display: none;
+        }
+    </style>
+</noscript>
 </head>
 
 <body>
+
+    <!-- PAGE LOADING STATE -->
+    <div id="page-loader" role="status">
+        <div class="loader-brand">
+            <h2>LUNÉA</h2>
+            <span>VOYAGES</span>
+        </div>
+
+        <div class="loader-spinner"></div>
+        <i class="bx bx-wifi-off" id="offline-icon" hidden></i>
+        <p id="loader-message">Duke u ngarkuar...</p>
+    </div>
 
     <!-- HEADER -->
     <header class="site-header">
@@ -269,7 +406,7 @@
 
                         <div class="offer-info">
                             <span class="discount">-15%</span>
-                            <h3>Santorini – Pushim Veror</h3>
+                            <h3>Santorini - Pushim Veror</h3>
                             <p>
                                 <i class="bx bx-calendar"></i>
                                 7 ditë / 6 netë
@@ -284,7 +421,7 @@
                                 <span>
                                     <strong>€699</strong> / person
                                 </span>
-                                <button class="offer-arrow" type="button" data-offer="Santorini – Pushim Veror" aria-label="Shiko Santorini">
+                                <button class="offer-arrow" type="button" data-offer="Santorini - Pushim Veror" aria-label="Shiko Santorini">
                                     <i class="bx bx-right-arrow-alt"></i>
                                 </button>
                             </div>

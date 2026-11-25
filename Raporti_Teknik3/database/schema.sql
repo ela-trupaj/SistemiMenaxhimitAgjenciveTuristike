@@ -1,4 +1,3 @@
--- SKEMË REFERUESE për instalim të ri. MOS e importoni mbi databazën ekzistuese pa backup!
 CREATE DATABASE IF NOT EXISTS agjencia_turistike CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE agjencia_turistike;
 CREATE TABLE IF NOT EXISTS rolet (id INT AUTO_INCREMENT PRIMARY KEY, emri VARCHAR(50) NOT NULL UNIQUE) ENGINE=InnoDB;

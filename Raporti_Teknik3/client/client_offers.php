@@ -181,10 +181,9 @@ page_top('Ofertat turistike');
 
                                     <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
                                     <input type="hidden" name="oferta_id" value="<?= e($oferta['id']) ?>">
-
                                     <input type="number" name="numri_personave" min="1" max="<?= e($oferta['vende_lira']) ?>" value="1" aria-label="Numri i personave" required>
 
-                                    <button type="submit" class="btn primary">
+                                    <button type="submit" class="btn primary" data-loading="Duke rezervuar...">
                                         <i class="bx bx-calendar-check"></i>
                                         Rezervo
                                     </button>

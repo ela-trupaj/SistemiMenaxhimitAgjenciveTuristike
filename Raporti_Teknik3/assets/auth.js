@@ -71,3 +71,79 @@ if (sidebar && menuToggle && sidebarOverlay) {
         sidebar.inert = true;
     }
 }
+
+// BUTTON LOADING STATE
+
+document.querySelectorAll('.auth-form').forEach(form => {
+
+    const button = form.querySelector('[data-loading]');
+
+    if (!button) return;
+
+    const originalContent = button.innerHTML;
+
+    // Gjate dergimit te formularit
+    form.addEventListener('submit', event => {
+
+        if (button.disabled) {
+            event.preventDefault();
+            return;
+        }
+
+        button.disabled = true;
+        button.classList.add('is-loading');
+        button.setAttribute('aria-busy', 'true');
+
+        button.innerHTML = `
+            <span class="auth-spinner" aria-hidden="true"></span>
+            <span>${button.dataset.loading}</span>
+        `;
+    });
+
+    // Rikthimi i gjendjes fillestare
+    window.addEventListener('pageshow', () => {
+
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        button.removeAttribute('aria-busy');
+        button.innerHTML = originalContent;
+    });
+});
+
+// DASHBOARD BUTTON LOADING STATE
+document.querySelectorAll('.booking-form, .cancel-form, .profile-form, .staff-form, .entity-form, .delete-form').forEach(form => {
+    const button = form.querySelector('[data-loading]');
+
+    if (!button) return;
+
+    const originalContent = button.innerHTML;
+
+    form.addEventListener('submit', event => {
+
+        // Kontrollimi i konfirmimit dhe klikimeve te perseritura
+        if (event.defaultPrevented) return;
+
+        if (button.disabled) {
+            event.preventDefault();
+            return;
+        }
+
+        button.disabled = true;
+        button.classList.add('is-loading');
+        button.setAttribute('aria-busy', 'true');
+
+        button.innerHTML = `
+            <span class="dashboard-spinner" aria-hidden="true"></span>
+            <span>${button.dataset.loading}</span>
+        `;
+    });
+
+    // Rikthimi i gjendjes fillestare
+    window.addEventListener('pageshow', () => {
+
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        button.removeAttribute('aria-busy');
+        button.innerHTML = originalContent;
+    });
+});

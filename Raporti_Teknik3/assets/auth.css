@@ -416,3 +416,55 @@ body.auth-body {
     font-size: 13px;
     line-height: 1.6;
 }
+
+/* BUTTON LOADING STATE */
+
+.auth-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-submit:disabled {
+    background: var(--primary);
+    opacity: 0.8;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
+}
+
+.auth-spinner {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    border: 2px solid var(--rose);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: auth-spin 0.8s linear infinite;
+}
+
+@keyframes auth-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* RESPONSIVE LOADING STATE */
+
+@media (max-width: 650px) {
+    .auth-submit.is-loading {
+        font-size: 16px;
+    }
+
+    .auth-spinner {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-spinner {
+        animation: none;
+    }
+}

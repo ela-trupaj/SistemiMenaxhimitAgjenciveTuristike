@@ -208,7 +208,7 @@ page_top('Profili im');
                 <input type="email" id="email" name="email" value="<?= e($email) ?>" maxlength="190" required>
             </div>
 
-            <button type="submit" class="btn primary">
+            <button type="submit" class="btn primary" data-loading="Duke ruajtur...">
                 <i class="bx bx-save"></i>
                 Ruaj ndryshimet
             </button>
@@ -267,7 +267,7 @@ page_top('Profili im');
                 </div>
             </div>
 
-            <button type="submit" class="btn primary">
+            <button type="submit" class="btn primary" data-loading="Duke ndryshuar...">
                 <i class="bx bx-lock-alt"></i>
                 Ndrysho fjalëkalimin
             </button>

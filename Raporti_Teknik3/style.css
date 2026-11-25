@@ -162,8 +162,8 @@ button {
 .hero {
     min-height:440px;
     position:relative;
-    background:#422D34 url('assets/images/santorini.svg') center 52%/cover no-repeat;
-    color:#fff
+    background:#422D34; /*url('assets/images/Santorin.png') center 52%/cover no-repeat; */
+    color:#fff;
 }
 
 .hero-shade {
@@ -1288,3 +1288,4 @@ dialog p {
         height: 175px; 
     }
 }
+

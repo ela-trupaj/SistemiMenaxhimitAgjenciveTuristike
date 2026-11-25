@@ -10,10 +10,7 @@ if (PHP_SAPI !== 'cli') {
 
 require dirname(__DIR__) . '/includes/bootstrap.php';
 
-// ==========================================
 // KONTROLLI I ARGUMENTEVE
-// ==========================================
-
 if ($argc !== 4) {
     echo "Usage: php tools/create_staff.php NAME EMAIL PASSWORD\n";
     exit(1);
@@ -24,10 +21,7 @@ if ($argc !== 4) {
 $name = trim($name);
 $email = trim($email);
 
-// ==========================================
 // VALIDIMI
-// ==========================================
-
 if ($name === '' || mb_strlen($name) > 100) {
     echo "Invalid name.\n";
     exit(1);
@@ -46,10 +40,7 @@ if (strlen($password) < 12) {
     exit(1);
 }
 
-// ==========================================
 // GJETJA E ROLIT STAF
-// ==========================================
-
 $stmt = $db->prepare(
     'SELECT id FROM rolet WHERE emri = ? LIMIT 1'
 );
@@ -63,10 +54,7 @@ if (!$roleId) {
     exit(1);
 }
 
-// ==========================================
 // KRIJIMI I LLOGARISE
-// ==========================================
-
 try {
 
     $passwordHash = password_hash(

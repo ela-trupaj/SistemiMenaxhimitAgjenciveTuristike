@@ -164,8 +164,7 @@ page_top('Rezervimet e mia');
 
                                     <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
                                     <input type="hidden" name="rezervimi_id" value="<?= e($rezervim['id']) ?>">
-
-                                    <button type="submit" class="btn-cancel">
+                                    <button type="submit" class="btn-cancel" data-loading="Duke anuluar...">
                                         <i class="bx bx-x"></i>
                                         Anulo
                                     </button>
