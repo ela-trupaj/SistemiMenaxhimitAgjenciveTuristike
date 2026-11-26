@@ -1,0 +1,199 @@
+@page {
+    margin: 35pt 40pt;
+}
+
+body {
+    font-family: DejaVu Sans, sans-serif;
+    font-size: 10pt;
+    color: #422D34;
+    line-height: 1.45;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: top;
+}
+
+/* HEADER */
+.header {
+    border-bottom: 2px solid #A98691;
+    margin-bottom: 20pt;
+}
+
+.header td {
+    padding-bottom: 12pt;
+}
+
+h1 {
+    font-size: 19pt;
+    margin: 0 0 4pt;
+}
+
+.logo {
+    font-family: DejaVu Serif, serif;
+    font-size: 25pt;
+    letter-spacing: 3pt;
+    line-height: 1.1;
+}
+
+.brand {
+    text-align: right;
+}
+
+.subtitle {
+    font-size: 8pt;
+    letter-spacing: 5pt;
+    color: #796B70;
+}
+
+.label {
+    font-size: 8pt;
+    color: #796B70;
+    letter-spacing: 0.5pt;
+}
+
+/* INFORMACIONET E KLIENTIT */
+.info td {
+    width: 50%;
+    padding: 0 8pt 0 0;
+}
+
+.info p {
+    margin: 3pt 0;
+}
+
+.status {
+    color: #36734B;
+    font-weight: bold;
+}
+
+/* MESAZHI PER KLIENTIN */
+.message {
+    margin: 18pt 0;
+}
+
+.message p {
+    margin: 6pt 0;
+}
+
+h2 {
+    font-size: 10pt;
+    margin: 0 0 7pt;
+    letter-spacing: 0.5pt;
+}
+
+/* DETAJET E UDHETIMIT */
+.trip {
+    background: #F8F5F0;
+    border-top: 2pt solid #A98691;
+    padding: 13pt;
+    margin-bottom: 14pt;
+    page-break-inside: avoid;
+}
+
+.trip td {
+    width: 50%;
+}
+
+.trip p {
+    margin: 5pt 0;
+}
+
+.destination {
+    font-family: DejaVu Serif, serif;
+    font-size: 24pt;
+    margin: 3pt 0;
+}
+
+.date {
+    font-size: 15pt;
+    font-weight: bold;
+    margin-top: 3pt;
+}
+
+.dates {
+    margin-top: 12pt;
+    border-top: 1px solid #E8D9DF;
+}
+
+.dates td {
+    padding-top: 10pt;
+}
+
+/* TABELA E DETAJEVE */
+.details th {
+    background: #F8F5F0;
+    font-size: 8pt;
+    text-align: left;
+    color: #796B70;
+}
+
+.details th,
+.details td {
+    padding: 8pt 6pt;
+    border-bottom: 1px solid #E8D9DF;
+}
+
+/* SHUMA TOTALE */
+.total {
+    background: #422D34;
+    color: #FFFFFF;
+    margin-top: 14pt;
+    page-break-inside: avoid;
+}
+
+.total td {
+    padding: 12pt;
+    vertical-align: middle;
+}
+
+.amount {
+    text-align: right;
+    font-size: 20pt;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* INFORMACION I RENDESISHEM */
+.note {
+    margin: 16pt 0 12pt;
+    font-size: 9pt;
+    color: #796B70;
+}
+
+/* FOTOGRAFIA E DESTINACIONIT */
+.photo {
+    margin-top: 8pt;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+.photo img {
+    max-width: 100%;
+    max-height: 115pt;
+    width: auto;
+    height: auto;
+}
+
+.photo-caption {
+    font-family: DejaVu Serif, serif;
+    font-size: 11pt;
+    color: #422D34;
+    margin: 5pt 0;
+}
+
+/* FOOTER */
+.footer {
+    border-top: 1px solid #A98691;
+    margin-top: 12pt;
+    padding-top: 8pt;
+    font-size: 8pt;
+    color: #796B70;
+    text-align: center;
+    page-break-inside: avoid;
+}
